@@ -29,10 +29,10 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Check for changes in training_data.csv
+      - name: Check for changes in training_data.cvs
         id: check_changes
         run: |
-          if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep 'training_data.csv'; then
+          if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep 'training_data.cvs'; then
             echo "changed=true" >> $GITHUB_OUTPUT
           else
             echo "changed=false" >> $GITHUB_OUTPUT
@@ -41,7 +41,7 @@ jobs:
       - name: Train Linear Model
         if: steps.check_changes.outputs.changed == 'true'
         run: |
-          python train_model.py
+          python training_model.py
 
       - name: Commit and Push Linear Model to Release Branch
         if: steps.check_changes.outputs.changed == 'true'
