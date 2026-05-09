@@ -29,10 +29,10 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Check for changes in training_data.cvs
+      - name: Check for changes in training_data.csv
         id: check_changes
         run: |
-          if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep 'training_data.cvs'; then
+          if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep 'training_data.csv'; then
             echo "changed=true" >> $GITHUB_OUTPUT
           else
             echo "changed=false" >> $GITHUB_OUTPUT
